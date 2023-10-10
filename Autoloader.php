@@ -15,7 +15,6 @@ class Autoloader
         //retirer le App\ ajouter le.php
         //1 on retire App\
         $class= str_replace(__NAMESPACE__ .'\\', '',$class ) ;
-        
         // 2 on tourne les antislash
         $class = str_replace('\\', '/', $class );
         echo $class;
