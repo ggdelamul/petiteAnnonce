@@ -1,5 +1,5 @@
 <?php 
-namespace App\Db;
+namespace App\Core;
 // on importe PDO
 use PDO;
 use PDOException;

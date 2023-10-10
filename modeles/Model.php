@@ -1,6 +1,6 @@
 <?php
 namespace App\modeles;
-use App\Db\Db;
+use App\Core\Db;
 //correspond au repositery de symfony
 class Model extends Db
 {
