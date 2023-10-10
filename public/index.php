@@ -1,10 +1,18 @@
 <?php
-//on definit la constante contenant le dossier racine du projet 
+use App\Autoloader;
+use App\Core\Main;
+// Définissez la constante ROOT pour pointer vers la racine du projet
 define('ROOT', dirname(__DIR__));
-echo ROOT;
+// Remplacez les barres obliques par des barres obliques inversées pour Windows
+require_once ROOT . '\Autoloader.php';
 
+// Enregistrez l'autoloader
+Autoloader::register();
+// On instancie Main (routeur)
+$app = new Main();
 
-
+//On demarre l'application 
+$app->start();
 
 
 

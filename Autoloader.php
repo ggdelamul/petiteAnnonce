@@ -17,7 +17,7 @@ class Autoloader
         $class= str_replace(__NAMESPACE__ .'\\', '',$class ) ;
         // 2 on tourne les antislash
         $class = str_replace('\\', '/', $class );
-        echo $class;
+     //    echo $class;
         //onverifie l'existence du fichier 
         $fichier= __DIR__ . '/' .$class .'.php';
         if(file_exists($fichier)){
