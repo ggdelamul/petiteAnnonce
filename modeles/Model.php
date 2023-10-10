@@ -1,7 +1,7 @@
 <?php
 namespace App\modeles;
 use App\Db\Db;
-
+//correspond au repositery de symfony
 class Model extends Db
 {
     //table de la base de donnée 
@@ -83,8 +83,34 @@ class Model extends Db
         }
         return $this;
     }
-
-
+    /////////////////////////UPDATE////////////////////////
+public function update(int $id , Model $model)
+    {
+        $champs = [];
+        $valeurs = [];
+        //on boucle pour éclater le tableau 
+        foreach($model as $champ => $valeur){
+          //UPDATE annonce SET titre=?, description=? , actif=? WHERE id=?
+           
+           if($valeur !=null && $champ != 'db' && $champ !='table'){
+            $champs[] = "$champ = ?" ;
+            $valeurs[] = $valeur;
+           }  
+        }
+        $valeurs[]=$id;
+        //  var_dump($champs);
+        //  var_dump($valeurs);
+         //on transforme le tableau champs en une chaine de caractère 
+         $liste_champ = implode(', ', $champs);//permet de tranformer le tableau en chaine de caractère
+         //echo ($liste_champ) ; die($liste_inter);
+         //on execute la requete 
+         return $this->myQuery('UPDATE '.$this-> table.' SET ' . $liste_champ . ' WHERE id = ? ', $valeurs);
+    }
+    /////////////////////////DELETE////////////////////////
+    public function delete(int $id)
+    {
+        return $this->myQuery("DELETE FROM {$this->table} WHERE id = ?", [$id]);
+    }
     //methode interne a model ////////////////////////////
      public function myQuery( string $sql, array $attributs = null)
     {
